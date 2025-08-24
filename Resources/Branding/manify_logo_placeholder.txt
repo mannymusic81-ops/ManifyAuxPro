@@ -1,0 +1,1 @@
+Place 'manify_logo.png' here. It will be shown in the plugin header.

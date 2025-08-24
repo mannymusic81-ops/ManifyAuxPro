@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JUCERPROJECT id="MaNiFyAuxPro" name="MaNiFyAuxPro" projectType="audioplug" version="0.1.0"
+              bundleIdentifier="com.manify.auxpro" companyName="MaNiFy" companyWebsite=""
+              pluginFormats="buildVST3,buildAU,buildStandalone"
+              pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn"
+              useAppConfig="1" addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1">
+
+  <MAINGROUP id="root" name="MaNiFyAuxPro">
+    <GROUP id="srcgrp" name="Source">
+      <FILE id="f1" name="PluginProcessor.h" file="Source/PluginProcessor.h" compile="0" resource="0"/>
+      <FILE id="f2" name="PluginProcessor.cpp" file="Source/PluginProcessor.cpp" compile="1" resource="0"/>
+      <FILE id="f3" name="PluginEditor.h" file="Source/PluginEditor.h" compile="0" resource="0"/>
+      <FILE id="f4" name="PluginEditor.cpp" file="Source/PluginEditor.cpp" compile="1" resource="0"/>
+      <FILE id="f5" name="SamplerEngine.h" file="Source/SamplerEngine.h" compile="0" resource="0"/>
+      <FILE id="f6" name="SamplerEngine.cpp" file="Source/SamplerEngine.cpp" compile="1" resource="0"/>
+    </GROUP>
+    <GROUP id="res" name="Resources">
+      <GROUP id="samples" name="Samples">
+        <FILE id="w1" name="Pads.wav" file="Resources/Samples/Pads.wav" compile="0" resource="1"/>
+        <FILE id="w2" name="Bells.wav" file="Resources/Samples/Bells.wav" compile="0" resource="1"/>
+        <FILE id="w3" name="Ambient.wav" file="Resources/Samples/Ambient.wav" compile="0" resource="1"/>
+        <FILE id="w4" name="Hits.wav" file="Resources/Samples/Hits.wav" compile="0" resource="1"/>
+        <FILE id="w5" name="Pluck.wav" file="Resources/Samples/Pluck.wav" compile="0" resource="1"/>
+      </GROUP>
+      <GROUP id="brand" name="Branding">
+        <FILE id="b1" name="manify_logo_placeholder.txt" file="Resources/Branding/manify_logo_placeholder.txt" compile="0" resource="0"/>
+      </GROUP>
+    </GROUP>
+  </MAINGROUP>
+
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX" pluginCopyStep="1"
+               osxSDK="default" osxCompatibility="10.13 SDK"
+               vst3Folder="~/Library/Audio/Plug-Ins/VST3" auv3Folder="">
+      <CONFIGURATION isDebug="1" name="Debug" targetName="MaNiFyAuxPro"/>
+      <CONFIGURATION isDebug="0" name="Release" targetName="MaNiFyAuxPro"/>
+    </XCODE_MAC>
+  </EXPORTFORMATS>
+
+  <MODULES>
+    <MODULE id="juce_core" useGlobalPath="1"/>
+    <MODULE id="juce_data_structures" useGlobalPath="1"/>
+    <MODULE id="juce_events" useGlobalPath="1"/>
+    <MODULE id="juce_graphics" useGlobalPath="1"/>
+    <MODULE id="juce_gui_basics" useGlobalPath="1"/>
+    <MODULE id="juce_gui_extra" useGlobalPath="1"/>
+    <MODULE id="juce_audio_basics" useGlobalPath="1"/>
+    <MODULE id="juce_audio_devices" useGlobalPath="1"/>
+    <MODULE id="juce_audio_formats" useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors" useGlobalPath="1"/>
+    <MODULE id="juce_audio_utils" useGlobalPath="1"/>
+    <MODULE id="juce_dsp" useGlobalPath="1"/>
+  </MODULES>
+</JUCERPROJECT>

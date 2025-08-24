@@ -1,0 +1,47 @@
+name: Build MaNiFy Aux Pro (macOS)
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-macos:
+    runs-on: macos-13
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Configure (CMake)
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        run: cmake --build build --config Release --parallel
+
+      - name: Ad-hoc codesign
+        run: |
+          codesign -s - --force --deep 
+build/MaNiFyAuxPro_artefacts/Release/AU/*.component || true
+          codesign -s - --force --deep 
+build/MaNiFyAuxPro_artefacts/Release/Standalone/*.app || true
+          codesign -s - --force --deep 
+build/MaNiFyAuxPro_artefacts/Release/VST3/*.vst3 || true
+
+      - name: Collect artifacts
+        run: |
+          mkdir -p out
+          cp -R build/MaNiFyAuxPro_artefacts/Release/VST3/*.vst3 out/ || 
+true
+          cp -R build/MaNiFyAuxPro_artefacts/Release/AU/*.component out/ 
+|| true
+          cp -R build/MaNiFyAuxPro_artefacts/Release/Standalone/*.app out/ 
+|| true
+          ls -la out
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: MaNiFyAuxPro-macOS
+          path: out
+
