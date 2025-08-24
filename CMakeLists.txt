@@ -28,6 +28,9 @@ juce_add_plugin(MaNiFyAuxPro
     PRODUCT_NAME "MaNiFy Aux Pro"
 )
 
+# Disable VST3<->VST2 replacement to avoid JUCE error in VST3 client
+target_compile_definitions(MaNiFyAuxPro PRIVATE JUCE_VST3_CAN_REPLACE_VST2=0)
+
 target_include_directories(MaNiFyAuxPro PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/Source
 )
