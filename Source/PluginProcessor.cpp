@@ -87,3 +87,9 @@ juce::AudioProcessorEditor* MaNiFyAuxProAudioProcessor::createEditor()
 {
     return new MaNiFyAuxProAudioProcessorEditor (*this);
 }
+
+// Factory method for JUCE
+AudioProcessor* JUCE_CALLTYPE createPluginFilter()
+{
+    return new MaNiFyAuxProAudioProcessor();
+}
