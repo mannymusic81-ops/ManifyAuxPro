@@ -19,24 +19,19 @@ jobs:
       - name: Build
         run: cmake --build build --config Release --parallel
 
-      - name: Ad-hoc codesign
+      - name: Ad-hoc codesign (for AU/VST3/App)
         run: |
-          codesign -s - --force --deep 
-build/MaNiFyAuxPro_artefacts/Release/AU/*.component || true
-          codesign -s - --force --deep 
-build/MaNiFyAuxPro_artefacts/Release/Standalone/*.app || true
-          codesign -s - --force --deep 
-build/MaNiFyAuxPro_artefacts/Release/VST3/*.vst3 || true
+          set -e
+          codesign -s - --force --deep build/MaNiFyAuxPro_artefacts/Release/AU/*.component || true
+          codesign -s - --force --deep build/MaNiFyAuxPro_artefacts/Release/Standalone/*.app || true
+          codesign -s - --force --deep build/MaNiFyAuxPro_artefacts/Release/VST3/*.vst3 || true
 
       - name: Collect artifacts
         run: |
           mkdir -p out
-          cp -R build/MaNiFyAuxPro_artefacts/Release/VST3/*.vst3 out/ || 
-true
-          cp -R build/MaNiFyAuxPro_artefacts/Release/AU/*.component out/ 
-|| true
-          cp -R build/MaNiFyAuxPro_artefacts/Release/Standalone/*.app out/ 
-|| true
+          cp -R build/MaNiFyAuxPro_artefacts/Release/VST3/*.vst3 out/ || true
+          cp -R build/MaNiFyAuxPro_artefacts/Release/AU/*.component out/ || true
+          cp -R build/MaNiFyAuxPro_artefacts/Release/Standalone/*.app out/ || true
           ls -la out
 
       - name: Upload Artifacts
@@ -44,4 +39,6 @@ true
         with:
           name: MaNiFyAuxPro-macOS
           path: out
+          if-no-files-found: error
+
 
