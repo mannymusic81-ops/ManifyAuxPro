@@ -1,0 +1,7 @@
+# Ignore CMake build folders
+build/
+CMakeCache.txt
+CMakeFiles/
+*.xcodeproj
+*.DS_Store
+
