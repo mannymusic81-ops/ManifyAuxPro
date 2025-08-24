@@ -28,6 +28,10 @@ juce_add_plugin(MaNiFyAuxPro
     PRODUCT_NAME "MaNiFy Aux Pro"
 )
 
+target_include_directories(MaNiFyAuxPro PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/Source
+)
+
 # Source files
 target_sources(MaNiFyAuxPro PRIVATE
     Source/PluginProcessor.cpp
